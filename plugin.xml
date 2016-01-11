@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.heytz.wifiutility" version="0.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Wifi</name>
+    <js-module name="Wifi" src="www/Wifi.js">
+        <clobbers target="cordova.plugins.Wifi"/>
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="Wifi">
+                <param name="ios-package" value="Wifi"/>
+            </feature>
+        </config-file>
+        <framework src="SystemConfiguration.framework"/>
+        <source-file src="src/ios/Wifi.m"/>
+    </platform>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Wifi">
+                <param name="android-package" value="com.heytz.wifiutility.Wifi"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"/>
+        <source-file src="src/android/Wifi.java" target-dir="src/com/heytz/wifiutility"/>
+    </platform>
+</plugin>
